@@ -1,9 +1,9 @@
-function [frGR,bgGR,yN,xN]=fsmPrepScaleSpace(I,strg,counter,sigmaOne,sigmaTwo,Q) 
+function [frGR,bgGR,yN,xN]=fsmPrepDifferenceOfGaussians(I,strg,counter,sigmaOne,sigmaTwo,Q) 
 
-% scaleSpace: segments an image to speckled and none-speckled part
+% DifferenceOfGaussians: segments an image to speckled and none-speckled part
 % finds all the speckles in the image after applying statistical test
 %
-% SYNOPSIS   [frGR,bgGR,yN,xN]=scaleSpace(sigmaOne,sigmaTwo)
+% SYNOPSIS   [frGR,bgGR,yN,xN]=DifferenceOfGaussians(sigmaOne,sigmaTwo)
 %
 % INPUT      I        : raw data image 
 %            strg     : format string for the correct file numbering
@@ -17,8 +17,8 @@ function [frGR,bgGR,yN,xN]=fsmPrepScaleSpace(I,strg,counter,sigmaOne,sigmaTwo,Q)
 %            yN       : Y speckle coordinates 
 %            xN       : X speckle coordinates
 %
-% DEPENDENCES   scaleSpace uses { gauss2d, locmax2d, edge, imfill }
-%               scaleSpace is used by { }
+% DEPENDENCES   DifferenceOfGaussians uses { gauss2d, locmax2d, edge, imfill }
+%               DifferenceOfGaussians is used by { }
 %
 % REMARKS       11 debug figures
 %
@@ -56,7 +56,7 @@ bg1=double(imfill(double(BG),'holes')); % fill in holes
 bg2=~bg1; % reverse
  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% scale space speckle detection
+% DifferenceOfGaussians speckle detection
 
 % filter sigma 2
 I2=Gauss2D(I,sigmaTwo);
@@ -91,38 +91,6 @@ sumMandSs=meanSig + Q*stdSig; % Significance Test
 Mask=ImaxFsss>sumMandSs;
 locMax=Mask.*ImaxFsss;
 [yN xN]=find(ne(locMax,0)); % final result: confirmed speckles
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Initialize cands structure
-cands=struct(...
-    'Lmax',[0 0],...                 % Local maximum position - [y x]
-    'Bkg1',[0 0],...                 % First local minimum position - [y x]
-    'Bkg2',[0 0],...                 % Second local minimum position - [y x]
-    'Bkg3',[0 0],...                 % Third local minimum position - [y x]
-    'ILmax',0,...                    % Local maximum intensity
-    'IBkg',0,...                     % Mean background intensity
-    'deltaI',0,...                   % Intensity difference: ILmax-IBkg
-    'deltaICrit',0,...               % Critical intensity difference as calculated with the noise model
-    'sigmaLmax',0,...                % Error on local maximum intensity
-    'sigmaBkg',0,...                 % Error on background intensity 
-    'status',0,...                   % Significance of the local maximum: 1, speckle; 0, weak local maximum
-    'speckleType',0);                % Describes the level of the speckle hierarchical structure
-    
-% fill in the cands
-for i=1:length(yN)
-    cands(i).Lmax=[yN(i) xN(i)];
-    cands(i).ILmax=locMax(yN(i),xN(i));
-    cands(i).deltaI=locMax(yN(i),xN(i));
-    cands(i).status=1;
-    cands(i).speckleType=1;
-end
- 
-% Save speckle information (cands and locMax) to disk for future use
-if DEBUG==0    
-    indxStr=sprintf(strg,counter);
-    eval(strcat('save cands',filesep,'cands',indxStr,'.mat cands;')); % Save speckle info
-    eval(strcat('save locMax',filesep,'locMax',indxStr,'.mat locMax;')); % Save loc max positions
-end
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % debug figures
