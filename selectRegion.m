@@ -1,6 +1,10 @@
 function [posMin,posMax,sRectangle,c]=selectRectangle
 
-% selects region in an image 
+% selects region in an image for speckle modulation analysis
+%
+% SYNOPSIS selectRectangle
+%
+% Alexandre Matov Sept 17, 2003
 
 k = waitforbuttonpress; % only if you dont have an open figure
 
