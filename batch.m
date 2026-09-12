@@ -4,7 +4,9 @@ try
     fileName='';
     dirName='';
     
+    % EDIT: hardcoded absolute path to the original author's machine
     dirName(1,:) ='P:\Mike\contrast\CMV_Vinc\cell02\';
+    % EDIT: hardcoded absolute path to the original author's machine
     dirName(2,:)='P:\Mike\contrast\CMV_Vinc\cell02\';
     
     fileName(1,:)='AOTF488_15_c02_dl.tif';
@@ -21,6 +23,7 @@ try
     fileName='';
     dirName='';
     
+    % EDIT: hardcoded absolute path to the original author's machine
     dirName(1,:) = 'P:\Mike\contrast\CMV_Vinc\cell11\';
     
     fileName(1,:)='AOTF488_32_c11_dl.tif';
