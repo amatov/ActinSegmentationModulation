@@ -3,7 +3,7 @@
 ## Quick start
 
 This repository implements speckle modulation computation for
-fluorescent speckle microscopy image data in MATLAB. See
+fluorescent speckle microscopy image data in Matlab. See
 [DEPENDENCIES.md](DEPENDENCIES.md) for the Image Processing Toolbox
 requirement.
 

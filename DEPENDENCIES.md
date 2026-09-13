@@ -1,6 +1,6 @@
 # Dependencies
 
-No specific MATLAB version is recorded. `getModulation.m`,
+No specific Matlab version is recorded. `getModulation.m`,
 `fsmPrepScaleSpace.m`, and `fsmPrepMainSecondarySpeckles.m` use
-`imread`/`imshow`, which require MATLAB's **Image Processing
+`imread`/`imshow`, which require Matlab's **Image Processing
 Toolbox**.
