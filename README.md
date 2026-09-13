@@ -1,4 +1,4 @@
-## ActinSegmentationModulation
+## Actin Segmentation Modulation
 
 The Matlab code I wrote to compute speckle modulation.
 
