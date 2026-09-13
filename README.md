@@ -19,8 +19,8 @@ requirement.
   speckle detection.
 - `batch.m`, `candsRoi.m`, `prepareRowData.m`, `selectRectangle.m`,
   `selectRegion.m`, `Gauss2D1.m` -- supporting utilities.
-- `gui/` -- a screenshot of the fsmDetection GUI.
-- `results/` -- a speckle density example output.
+- [`gui/`](gui/) -- a screenshot of the fsmDetection GUI.
+- [`results/`](results/) -- a speckle density example output.
 - **License:** see [LICENSE](LICENSE) -- research/educational use.
 
 ## About
