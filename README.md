@@ -1,6 +1,6 @@
 ## ActinSegmentationModulation
 
-The Matlab code I wrote to compute the speckle modulation.
+The Matlab code I wrote to compute speckle modulation.
 
 ## Quick start
 
@@ -25,7 +25,7 @@ requirement.
 
 ## About
 
-My work on the speckle modulation for the publication:
+My work on speckle modulation for the publication:
 
 Mike Adams, Alex Matov, Daphne Yarar, Steph Gupton, Gaudy Danuser, Clare Waterman "Signal Analysis of Total Internal Reflection Fluorescent Speckle Microscopy and Wide-Field Epi-Fluorescence FSM of the Actin Cytoskeleton and Focal Adhesions in Living Cells" (2004).
 
